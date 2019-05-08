@@ -11,8 +11,8 @@ namespace GoSwoole\Plugins\Security\Aspect;
 use Go\Aop\Intercept\MethodInvocation;
 use Go\Lang\Annotation\Around;
 use Go\Lang\Annotation\Aspect;
-use GoSwoole\Plugins\Cache\Annotation\PostAuthorize;
-use GoSwoole\Plugins\Cache\Annotation\PreAuthorize;
+use GoSwoole\Plugins\Security\Annotation\PostAuthorize;
+use GoSwoole\Plugins\Security\Annotation\PreAuthorize;
 use GoSwoole\Plugins\Security\AccessDeniedException;
 
 class SecurityAspect extends Aspect

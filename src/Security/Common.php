@@ -18,7 +18,9 @@ use GoSwoole\Plugins\Session\HttpSession;
 function hasRole(string $role)
 {
     $session = getDeepContextValueByClassName(HttpSession::class);
-    if ($session == null) return false;
+    if ($session == null) {
+        $session = new HttpSession();
+    }
     $principal = $session->getAttribute("Principal");
     if ($principal instanceof Principal) {
         return $principal->hasRole($role);
@@ -35,7 +37,9 @@ function hasRole(string $role)
 function hasAnyRole(array $roles)
 {
     $session = getDeepContextValueByClassName(HttpSession::class);
-    if ($session == null) return false;
+    if ($session == null) {
+        $session = new HttpSession();
+    }
     $principal = $session->getAttribute("Principal");
     if ($principal instanceof Principal) {
         return $principal->hasAnyRole($roles);
@@ -68,7 +72,9 @@ function denyAll()
 function isAuthenticated()
 {
     $session = getDeepContextValueByClassName(HttpSession::class);
-    if ($session == null) return false;
+    if ($session == null) {
+        $session = new HttpSession();
+    }
     $principal = $session->getAttribute("Principal");
     if ($principal == null) {
         return false;
@@ -85,7 +91,9 @@ function isAuthenticated()
 function hasPermission(string $permission)
 {
     $session = getDeepContextValueByClassName(HttpSession::class);
-    if ($session == null) return false;
+    if ($session == null) {
+        $session = new HttpSession();
+    }
     $principal = $session->getAttribute("Principal");
     if ($principal instanceof Principal) {
         return $principal->hasPermission($permission);

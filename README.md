@@ -37,6 +37,7 @@ function isAuthenticated()
  * @return bool
  */
 function hasPermission(string $permission)
+
 ```
 /**
  * IP地址是否符合支持10.0.0.0/16这种

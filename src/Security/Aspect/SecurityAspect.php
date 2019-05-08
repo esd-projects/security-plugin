@@ -8,14 +8,14 @@
 
 namespace GoSwoole\Plugins\Security\Aspect;
 
+use Go\Aop\Aspect;
 use Go\Aop\Intercept\MethodInvocation;
 use Go\Lang\Annotation\Around;
-use Go\Lang\Annotation\Aspect;
 use GoSwoole\Plugins\Security\Annotation\PostAuthorize;
 use GoSwoole\Plugins\Security\Annotation\PreAuthorize;
 use GoSwoole\Plugins\Security\AccessDeniedException;
 
-class SecurityAspect extends Aspect
+class SecurityAspect implements Aspect
 {
     /**
      * @param MethodInvocation $invocation Invocation

@@ -1,5 +1,5 @@
 # security-plugin
-
+```
 /**
  * 当前账户有指定角色时返回true
  * @param string $role
@@ -37,7 +37,7 @@ function isAuthenticated()
  * @return bool
  */
 function hasPermission(string $permission)
-
+```
 /**
  * IP地址是否符合支持10.0.0.0/16这种
  * @param array $ips

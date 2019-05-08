@@ -1,0 +1,27 @@
+{
+  "require": {
+    "go-swoole/base-server":"~0.1",
+    "go-swoole/aop-plugin":"~0.1",
+    "go-swoole/session-plugin":"~0.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "GoSwoole\\Plugins\\": "src/"
+    },
+    "files": [
+      "src/Security/Common.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "tmtbe",
+      "email": "896369042@qq.com",
+      "homepage": "https://github.com/tmtbe"
+    }
+  ],
+  "name": "go-swoole/security-plugin",
+  "type": "library",
+  "keywords": ["server", "swoole"],
+  "description": "security-plugin",
+  "license": "MIT"
+}

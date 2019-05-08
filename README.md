@@ -38,10 +38,10 @@ function isAuthenticated()
  */
 function hasPermission(string $permission)
 
-```
 /**
  * IP地址是否符合支持10.0.0.0/16这种
  * @param array $ips
  * @return bool
  */
 function hasIpAddress($ips)
+```

@@ -6,7 +6,7 @@
  * Time: 16:03
  */
 
-namespace GoSwoole\Plugins\Security\Beans;
+namespace ESD\Plugins\Security\Beans;
 class Principal
 {
     /**

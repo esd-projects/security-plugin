@@ -6,10 +6,10 @@
  * Time: 16:23
  */
 
-namespace GoSwoole\Plugins\Security;
+namespace ESD\Plugins\Security;
 
 
-use GoSwoole\BaseServer\Exception;
+use ESD\BaseServer\Exception;
 
 class AccessDeniedException extends Exception
 {

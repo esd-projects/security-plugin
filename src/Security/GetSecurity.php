@@ -6,10 +6,10 @@
  * Time: 17:06
  */
 
-namespace GoSwoole\Plugins\Security;
+namespace ESD\Plugins\Security;
 
-use GoSwoole\Plugins\Security\Beans\Principal;
-use GoSwoole\Plugins\Session\GetSession;
+use ESD\Plugins\Security\Beans\Principal;
+use ESD\Plugins\Session\GetSession;
 
 trait GetSecurity
 {

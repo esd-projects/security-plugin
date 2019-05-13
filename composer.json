@@ -1,12 +1,12 @@
 {
   "require": {
-    "go-swoole/base-server":"~0.1",
-    "go-swoole/aop-plugin":"~0.1",
-    "go-swoole/session-plugin":"~0.1"
+    "esd/base-server":"~0.1",
+    "esd/aop-plugin":"~0.1",
+    "esd/session-plugin":"~0.1"
   },
   "autoload": {
     "psr-4": {
-      "GoSwoole\\Plugins\\": "src/"
+      "ESD\\Plugins\\": "src/"
     },
     "files": [
       "src/Security/Common.php"
@@ -19,7 +19,7 @@
       "homepage": "https://github.com/tmtbe"
     }
   ],
-  "name": "go-swoole/security-plugin",
+  "name": "esd/security-plugin",
   "type": "library",
   "keywords": ["server", "swoole"],
   "description": "security-plugin",

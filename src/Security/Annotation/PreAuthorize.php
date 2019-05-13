@@ -6,7 +6,7 @@
  * Time: 15:51
  */
 
-namespace GoSwoole\Plugins\Security\Annotation;
+namespace ESD\Plugins\Security\Annotation;
 
 
 use Doctrine\Common\Annotations\Annotation;

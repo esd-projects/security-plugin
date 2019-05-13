@@ -6,9 +6,9 @@
  * Time: 16:31
  */
 
-use GoSwoole\BaseServer\Server\Beans\Request;
-use GoSwoole\Plugins\Security\Beans\Principal;
-use GoSwoole\Plugins\Session\HttpSession;
+use ESD\BaseServer\Server\Beans\Request;
+use ESD\Plugins\Security\Beans\Principal;
+use ESD\Plugins\Session\HttpSession;
 
 /**
  * 当前账户有指定角色时返回true

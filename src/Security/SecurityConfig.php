@@ -6,10 +6,10 @@
  * Time: 15:44
  */
 
-namespace GoSwoole\Plugins\Security;
+namespace ESD\Plugins\Security;
 
 
-use GoSwoole\BaseServer\Plugins\Config\BaseConfig;
+use ESD\BaseServer\Plugins\Config\BaseConfig;
 
 class SecurityConfig extends BaseConfig
 {

@@ -6,15 +6,15 @@
  * Time: 15:34
  */
 
-namespace GoSwoole\Plugins\Security;
+namespace ESD\Plugins\Security;
 
-use GoSwoole\BaseServer\Server\Context;
-use GoSwoole\BaseServer\Server\PlugIn\AbstractPlugin;
-use GoSwoole\BaseServer\Server\PlugIn\PluginInterfaceManager;
-use GoSwoole\BaseServer\Server\Server;
-use GoSwoole\Plugins\Aop\AopPlugin;
-use GoSwoole\Plugins\Security\Aspect\SecurityAspect;
-use GoSwoole\Plugins\Session\SessionPlugin;
+use ESD\BaseServer\Server\Context;
+use ESD\BaseServer\Server\PlugIn\AbstractPlugin;
+use ESD\BaseServer\Server\PlugIn\PluginInterfaceManager;
+use ESD\BaseServer\Server\Server;
+use ESD\Plugins\Aop\AopPlugin;
+use ESD\Plugins\Security\Aspect\SecurityAspect;
+use ESD\Plugins\Session\SessionPlugin;
 
 class SecurityPlugin extends AbstractPlugin
 {
@@ -53,7 +53,7 @@ class SecurityPlugin extends AbstractPlugin
      * @param PluginInterfaceManager $pluginInterfaceManager
      * @return mixed|void
      * @throws \DI\DependencyException
-     * @throws \GoSwoole\BaseServer\Exception
+     * @throws \ESD\BaseServer\Exception
      * @throws \ReflectionException
      */
     public function onAdded(PluginInterfaceManager $pluginInterfaceManager)
@@ -68,7 +68,7 @@ class SecurityPlugin extends AbstractPlugin
      * 在服务启动前
      * @param Context $context
      * @return mixed
-     * @throws \GoSwoole\BaseServer\Server\Exception\ConfigException
+     * @throws \ESD\BaseServer\Server\Exception\ConfigException
      */
     public function beforeServerStart(Context $context)
     {

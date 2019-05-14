@@ -12,6 +12,7 @@ use ESD\BaseServer\Server\Context;
 use ESD\BaseServer\Server\PlugIn\AbstractPlugin;
 use ESD\BaseServer\Server\PlugIn\PluginInterfaceManager;
 use ESD\BaseServer\Server\Server;
+use ESD\Plugins\Aop\AopConfig;
 use ESD\Plugins\Aop\AopPlugin;
 use ESD\Plugins\Security\Aspect\SecurityAspect;
 use ESD\Plugins\Session\SessionPlugin;
@@ -64,6 +65,14 @@ class SecurityPlugin extends AbstractPlugin
     }
 
 
+    public function init(Context $context)
+    {
+        parent::init($context);
+        $this->securityConfig->merge();
+        $aopConfig = Server::$instance->getContainer()->get(AopConfig::class);
+        $aopConfig->addAspect(new SecurityAspect());
+    }
+
     /**
      * 在服务启动前
      * @param Context $context
@@ -73,10 +82,6 @@ class SecurityPlugin extends AbstractPlugin
     public function beforeServerStart(Context $context)
     {
         $this->securityConfig->merge();
-        $aopPlugin = Server::$instance->getPlugManager()->getPlug(AopPlugin::class);
-        if ($aopPlugin instanceof AopPlugin) {
-            $aopPlugin->getAopConfig()->addAspect(new SecurityAspect());
-        }
     }
 
     /**

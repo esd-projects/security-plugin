@@ -8,14 +8,14 @@
 
 namespace ESD\Plugins\Security\Aspect;
 
-use Go\Aop\Aspect;
-use Go\Aop\Intercept\MethodInvocation;
-use Go\Lang\Annotation\Around;
+use ESD\Plugins\Aop\OrderAspect;
+use ESD\Plugins\Security\AccessDeniedException;
 use ESD\Plugins\Security\Annotation\PostAuthorize;
 use ESD\Plugins\Security\Annotation\PreAuthorize;
-use ESD\Plugins\Security\AccessDeniedException;
+use Go\Aop\Intercept\MethodInvocation;
+use Go\Lang\Annotation\Around;
 
-class SecurityAspect implements Aspect
+class SecurityAspect extends OrderAspect
 {
     /**
      * @param MethodInvocation $invocation Invocation
@@ -54,5 +54,13 @@ class SecurityAspect implements Aspect
         } else {
             throw new AccessDeniedException();
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return "SecurityAspect";
     }
 }

@@ -8,10 +8,9 @@
 
 namespace ESD\Plugins\Security;
 
-use ESD\BaseServer\Server\Context;
-use ESD\BaseServer\Server\PlugIn\AbstractPlugin;
-use ESD\BaseServer\Server\PlugIn\PluginInterfaceManager;
-use ESD\BaseServer\Server\Server;
+use ESD\Core\Context\Context;
+use ESD\Core\PlugIn\AbstractPlugin;
+use ESD\Core\PlugIn\PluginInterfaceManager;
 use ESD\Plugins\Aop\AopConfig;
 use ESD\Plugins\Aop\AopPlugin;
 use ESD\Plugins\Security\Aspect\SecurityAspect;
@@ -38,6 +37,7 @@ class SecurityPlugin extends AbstractPlugin
      * @param SecurityConfig|null $securityConfig
      * @throws \DI\DependencyException
      * @throws \ReflectionException
+     * @throws \DI\NotFoundException
      */
     public function __construct(?SecurityConfig $securityConfig = null)
     {
@@ -54,7 +54,8 @@ class SecurityPlugin extends AbstractPlugin
      * @param PluginInterfaceManager $pluginInterfaceManager
      * @return mixed|void
      * @throws \DI\DependencyException
-     * @throws \ESD\BaseServer\Exception
+     * @throws \DI\NotFoundException
+     * @throws \ESD\Core\Exception
      * @throws \ReflectionException
      */
     public function onAdded(PluginInterfaceManager $pluginInterfaceManager)
@@ -65,11 +66,18 @@ class SecurityPlugin extends AbstractPlugin
     }
 
 
+    /**
+     * @param Context $context
+     * @return mixed|void
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
+     * @throws \ESD\Core\Plugins\Config\ConfigException
+     */
     public function init(Context $context)
     {
         parent::init($context);
         $this->securityConfig->merge();
-        $aopConfig = Server::$instance->getContainer()->get(AopConfig::class);
+        $aopConfig = DIget(AopConfig::class);
         $aopConfig->addAspect(new SecurityAspect());
     }
 
@@ -77,7 +85,9 @@ class SecurityPlugin extends AbstractPlugin
      * 在服务启动前
      * @param Context $context
      * @return mixed
-     * @throws \ESD\BaseServer\Server\Exception\ConfigException
+     * @throws \DI\DependencyException
+     * @throws \DI\NotFoundException
+     * @throws \ESD\Core\Plugins\Config\ConfigException
      */
     public function beforeServerStart(Context $context)
     {

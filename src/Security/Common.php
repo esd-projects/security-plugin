@@ -6,7 +6,7 @@
  * Time: 16:31
  */
 
-use ESD\BaseServer\Server\Beans\Request;
+use ESD\Core\Server\Beans\Request;
 use ESD\Plugins\Security\Beans\Principal;
 use ESD\Plugins\Session\HttpSession;
 
@@ -14,6 +14,8 @@ use ESD\Plugins\Session\HttpSession;
  * 当前账户有指定角色时返回true
  * @param string $role
  * @return bool
+ * @throws \DI\DependencyException
+ * @throws \DI\NotFoundException
  */
 function hasRole(string $role)
 {
@@ -33,6 +35,8 @@ function hasRole(string $role)
  * 当前账户有指定角色中的任意一个时返回true
  * @param array $roles
  * @return bool
+ * @throws \DI\DependencyException
+ * @throws \DI\NotFoundException
  */
 function hasAnyRole(array $roles)
 {
@@ -68,6 +72,9 @@ function denyAll()
 
 /**
  * 是否已经登录
+ * @return bool
+ * @throws \DI\DependencyException
+ * @throws \DI\NotFoundException
  */
 function isAuthenticated()
 {
@@ -87,6 +94,8 @@ function isAuthenticated()
  * 是否拥有权限
  * @param string $permission
  * @return bool
+ * @throws \DI\DependencyException
+ * @throws \DI\NotFoundException
  */
 function hasPermission(string $permission)
 {

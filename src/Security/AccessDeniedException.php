@@ -8,8 +8,7 @@
 
 namespace ESD\Plugins\Security;
 
-
-use ESD\BaseServer\Exception;
+use ESD\Core\Exception;
 
 class AccessDeniedException extends Exception
 {

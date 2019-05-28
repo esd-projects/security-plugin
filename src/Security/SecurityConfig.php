@@ -8,8 +8,7 @@
 
 namespace ESD\Plugins\Security;
 
-
-use ESD\BaseServer\Plugins\Config\BaseConfig;
+use ESD\Core\Plugins\Config\BaseConfig;
 
 class SecurityConfig extends BaseConfig
 {

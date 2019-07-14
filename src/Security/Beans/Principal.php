@@ -7,6 +7,7 @@
  */
 
 namespace ESD\Plugins\Security\Beans;
+
 class Principal
 {
     /**
@@ -69,13 +70,14 @@ class Principal
         $this->username = $username;
     }
 
-    public function hasRole(string $role)
+    /**
+     * @param array|string $roles
+     * @return bool
+     */
+    public function hasAnyRole($roles)
     {
-        return in_array($role, $this->roles);
-    }
-
-    public function hasAnyRole(array $roles)
-    {
+        if (is_string($roles)) $roles = [$roles];
+        elseif (!is_array($roles)) return false;
         foreach ($roles as $role) {
             if (in_array($role, $this->roles)) {
                 return true;
@@ -84,8 +86,19 @@ class Principal
         return false;
     }
 
-    public function hasPermission(string $permission)
+    /**
+     * @param string|array $permissions
+     * @return bool
+     */
+    public function hasAnyPermission($permissions)
     {
-        return in_array($permission, $this->permissions);
+        if (is_string($permissions)) $permissions = [$permissions];
+        elseif (!is_array($permissions)) return false;
+        foreach ($permissions as $permission) {
+            if (in_array($permission, $this->permissions)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

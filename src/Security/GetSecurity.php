@@ -24,6 +24,7 @@ trait GetSecurity
 
     public function setPrincipal(Principal $principal)
     {
+        if (!$this->getSession()->isAvailable()) $this->getSession()->create();
         $this->getSession()->setAttribute("Principal", $principal);
     }
 

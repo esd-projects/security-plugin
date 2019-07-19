@@ -35,9 +35,6 @@ class SecurityPlugin extends AbstractPlugin
     /**
      * CachePlugin constructor.
      * @param SecurityConfig|null $securityConfig
-     * @throws \DI\DependencyException
-     * @throws \ReflectionException
-     * @throws \DI\NotFoundException
      */
     public function __construct(?SecurityConfig $securityConfig = null)
     {
@@ -53,8 +50,6 @@ class SecurityPlugin extends AbstractPlugin
     /**
      * @param PluginInterfaceManager $pluginInterfaceManager
      * @return mixed|void
-     * @throws \DI\DependencyException
-     * @throws \DI\NotFoundException
      * @throws \ESD\Core\Exception
      * @throws \ReflectionException
      */
@@ -69,9 +64,8 @@ class SecurityPlugin extends AbstractPlugin
     /**
      * @param Context $context
      * @return mixed|void
-     * @throws \DI\DependencyException
-     * @throws \DI\NotFoundException
      * @throws \ESD\Core\Plugins\Config\ConfigException
+     * @throws \ReflectionException
      */
     public function init(Context $context)
     {
@@ -85,9 +79,8 @@ class SecurityPlugin extends AbstractPlugin
      * 在服务启动前
      * @param Context $context
      * @return mixed
-     * @throws \DI\DependencyException
-     * @throws \DI\NotFoundException
      * @throws \ESD\Core\Plugins\Config\ConfigException
+     * @throws \ReflectionException
      */
     public function beforeServerStart(Context $context)
     {

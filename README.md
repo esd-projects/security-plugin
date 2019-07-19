@@ -1,47 +1,52 @@
 # security-plugin
 ```
 /**
- * 当前账户有指定角色时返回true
- * @param string $role
- * @return bool
- */
-function hasRole(string $role)
-
-/**
- * 当前账户有指定角色中的任意一个时返回true
- * @param array $roles
- * @return bool
- */
-function hasAnyRole(array $roles)
-
-/**
- * 允许所有
- * @return bool
- */
-function permitAll()
-
-/**
- * 拒绝所有
- * @return bool
- */
-function denyAll()
-
-/**
- * 是否已经登录
- */
-function isAuthenticated()
-
-/**
- * 是否拥有权限
- * @param string $permission
- * @return bool
- */
-function hasPermission(string $permission)
-
-/**
- * IP地址是否符合支持10.0.0.0/16这种
- * @param array $ips
- * @return bool
- */
-function hasIpAddress($ips)
+    /**
+     * @GetMapping("/login")
+     */
+    public function login() {
+        $principal = new Principal();
+        $principal->setUsername('elite');
+        $principal->addRole('role1');
+        $principal->addPermissions('p1');
+        $principal->addPermissions('p2');
+        $this->setPrincipal($principal);
+        return 'success';
+    }
+    
+    /**
+     * @PreAuthorize()
+     * @GetMapping()
+     */
+    public function auth1()
+    {
+        return '必须先访问/login';
+    }
+    
+    /**
+     * @PreAuthorize(all=true, deny=true)
+     * @GetMapping()
+     */
+    public function auth2()
+    {
+        return '必须先访问/login';
+    }
+    
+    /**
+     * @PreAuthorize("p1")
+     * @GetMapping()
+     */
+    public function auth3()
+    {
+        return '必须有p1权限';
+    }
+    
+    /**
+     * @PreAuthorize(value="p1", roles={"role1", "role2"}, ips={"172.21.0.0/16"})
+     * @GetMapping("/auth4")
+     */
+    public function auth4()
+    {
+        return '必须有p1权限，role1或role2,ip掩码地址才可以访问';
+    }
 ```

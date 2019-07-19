@@ -30,9 +30,10 @@ class SecurityAspect extends OrderAspect
      */
     public function aroundPostAuthorize(MethodInvocation $invocation)
     {
+        $returnObject = $invocation->proceed();
         /** @var PostAuthorize $postAuthorize */
         $postAuthorize = $invocation->getMethod()->getAnnotation(PostAuthorize::class);
-        $returnObject = $invocation->proceed();
+
         if (!$this->isAuthenticated()) {
             throw new AccessDeniedException();
         }
@@ -68,6 +69,15 @@ class SecurityAspect extends OrderAspect
     public function aroundPreAuthorize(MethodInvocation $invocation)
     {
         $preAuthorize = $invocation->getMethod()->getAnnotation(PreAuthorize::class);
+        if (!$this->isAuthenticated()) {
+            throw new AccessDeniedException();
+        }
+        if ($preAuthorize->all) {
+            return $invocation->proceed();
+        }
+        if ($preAuthorize->deny) {
+            throw new AccessDeniedException();
+        }
         if ($preAuthorize->value && !$this->hasAnyPermission($preAuthorize->value)) {
             throw new AccessDeniedException();
         }

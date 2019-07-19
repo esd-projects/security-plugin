@@ -17,6 +17,7 @@
     }
   ],
   "name": "esd/security-plugin",
+  "version": "0.1.0",
   "type": "library",
   "keywords": ["server", "swoole"],
   "description": "security-plugin",

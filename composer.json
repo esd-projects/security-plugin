@@ -7,10 +7,7 @@
   "autoload": {
     "psr-4": {
       "ESD\\Plugins\\": "src/"
-    },
-    "files": [
-      "src/Security/Common.php"
-    ]
+    }
   },
   "authors": [
     {
@@ -20,6 +17,7 @@
     }
   ],
   "name": "esd/security-plugin",
+  "version": "0.1.0",
   "type": "library",
   "keywords": ["server", "swoole"],
   "description": "security-plugin",
